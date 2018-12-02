@@ -78,7 +78,7 @@ stretch_mode = 7
 
 [node name="Player" parent="." index="1" instance=ExtResource( 4 )]
 
-position = Vector2( 632.825, -38.0246 )
+position = Vector2( 639.675, -253.786 )
 
 [node name="TileMap" type="TileMap" parent="." index="2"]
 
@@ -137,7 +137,5 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_Timer_timeout"]
-
-[connection signal="enemy_fell" from="Pit" to="Spawner" method="_on_Pit_enemy_fell"]
 
 
