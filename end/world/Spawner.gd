@@ -33,6 +33,6 @@ func _on_Timer_timeout():
 	_set_wait_time()
 
 func _on_enemy_died():
-	min_wait_time -= 0.25
-	if min_wait_time <= START_MIN_WAIT_TIME / 2:
-		min_wait_time = START_MIN_WAIT_TIME / 2
+	print(min_wait_time)
+	if min_wait_time > 0.80:
+		min_wait_time = min_wait_time * 0.95

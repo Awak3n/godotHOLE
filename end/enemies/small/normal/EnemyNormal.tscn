@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://enemies/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://enemies/Golem.gd" type="Script" id=1]
 [ext_resource path="res://enemies/small/normal/sprites/enemy-blue-walk-1.png" type="Texture" id=2]
 [ext_resource path="res://enemies/small/normal/sprites/enemy-blue-walk-2.png" type="Texture" id=3]
 [ext_resource path="res://enemies/small/normal/sprites/enemy-blue-walk-3.png" type="Texture" id=4]
@@ -44,7 +44,7 @@ GRAVITY = 500
 
 frames = SubResource( 1 )
 animation = "run"
-frame = 2
+frame = 4
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
