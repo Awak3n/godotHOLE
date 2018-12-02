@@ -3,7 +3,7 @@ extends Node2D
 const ENEMY = preload('res://enemies/small/normal/EnemyNormal.tscn')
 const ENEMY_ENRAGED = preload('res://enemies/small/enraged/EnemyEnraged.tscn')
 export var START_DELAY = 5.0
-export var START_MIN_WAIT_TIME = 4.0
+export var START_MIN_WAIT_TIME = 3.5
 
 var min_wait_time = START_MIN_WAIT_TIME
 
@@ -34,5 +34,5 @@ func _on_Timer_timeout():
 
 func _on_enemy_died():
 	print(min_wait_time)
-	if min_wait_time > 0.80:
-		min_wait_time = min_wait_time * 0.95
+	if min_wait_time > 0.75:
+		min_wait_time = min_wait_time * 0.97
