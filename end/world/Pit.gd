@@ -10,7 +10,7 @@ func _ready():
 func _on_body_entered(body):
 	print(body.name)
 	if body.is_in_group('Golem'):
-		emit_signal('enemy_fell')
+		emit_signal('golem_fell')
 	elif body.is_in_group('Skull'):
 		emit_signal('skull_fell')
 	elif body.is_in_group('Ghost'):

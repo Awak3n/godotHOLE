@@ -6,7 +6,7 @@ const GHOST_ENEMY = preload('res://enemies/Ghost/ghostSprites/normal/EnemyNormal
 const GHOST_ENRAGED = preload('res://enemies/Ghost/ghostSprites/enraged/EnemyEnraged.tscn')
 const SKULL_ENEMY = preload('res://enemies/Skull/skullSprites/normal/EnemyNormal.tscn')
 const SKULL_ENRAGED = preload('res://enemies/Skull/skullSprites/enraged/EnemyEnraged.tscn')
-export var START_DELAY = 5.0
+export var START_DELAY = 3
 export var START_MIN_WAIT_TIME = 3.5
 
 var min_wait_time = START_MIN_WAIT_TIME
@@ -29,7 +29,10 @@ func _spawn_golem():
 
 func _on_Pit_ghost_fell():
 	var new_enemy = GHOST_ENRAGED.instance()
-	new_enemy.connect('ghost_died', self, '_on_enemy_died')
+	add_child(new_enemy)
+	$Timer.wait_time = 0.3
+	$Timer.start()
+	new_enemy = GHOST_ENRAGED.instance()
 	add_child(new_enemy)
 
 func _spawn_ghost():
@@ -52,7 +55,6 @@ func _set_wait_time():
 	$Timer.start()
 
 func _on_Timer_timeout():
-	print('timeout')
 	var random = randi()%3
 	if random == 0: 
 		_spawn_ghost()

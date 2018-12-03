@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var SPEED = 250
+export var SPEED = 100
 export var MAX_HEALTH = 100
 export var GRAVITY = 500
 
@@ -37,3 +37,7 @@ func _on_DirectionCheck_body_entered(body):
 
 func _update_sprite_direction():
 	$AnimatedSprite.flip_h = direction == -1
+
+
+func _on_Timer_timeout():
+	MAX_HEALTH = MAX_HEALTH + 5
