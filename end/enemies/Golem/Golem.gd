@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-export var SPEED = 100
-export var MAX_HEALTH = 100
+export var SPEED = 50
+export var MAX_HEALTH = 150
 export var GRAVITY = 500
 
 var direction = 0
@@ -40,4 +40,5 @@ func _update_sprite_direction():
 
 
 func _on_Timer_timeout():
+	print(MAX_HEALTH)
 	MAX_HEALTH = MAX_HEALTH + 5

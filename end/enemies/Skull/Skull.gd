@@ -7,6 +7,7 @@ export var GRAVITY = 500
 var direction = 0
 var motion = Vector2()
 var health = MAX_HEALTH
+onready var player = get_node("/player/Player")
 
 signal skull_died
 
@@ -38,8 +39,9 @@ func _on_DirectionCheck_body_entered(body):
 func _update_sprite_direction():
 	$AnimatedSprite.flip_h = direction == -1
 
-
 func _on_Timer_timeout():
-	randomize()
-	direction = 1 if rand_range(0, 100) > 50 else -1
-	_update_sprite_direction()
+	direction = player.position - self.position
+	if direction.x > 0:
+		self.get_node("Skull").set_flip_h(1)
+	else:
+		self.get_node("Skull").set_flip_h(0)

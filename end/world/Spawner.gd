@@ -1,11 +1,5 @@
 extends Node2D
 
-const GOLEM_ENEMY = preload('res://enemies/Golem/golemSprites/normal/EnemyNormal.tscn')
-const GOLEM_ENRAGED = preload('res://enemies/Golem/golemSprites/enraged/EnemyEnraged.tscn')
-const GHOST_ENEMY = preload('res://enemies/Ghost/ghostSprites/normal/EnemyNormal.tscn')
-const GHOST_ENRAGED = preload('res://enemies/Ghost/ghostSprites/enraged/EnemyEnraged.tscn')
-const SKULL_ENEMY = preload('res://enemies/Skull/skullSprites/normal/EnemyNormal.tscn')
-const SKULL_ENRAGED = preload('res://enemies/Skull/skullSprites/enraged/EnemyEnraged.tscn')
 export var START_DELAY = 3
 export var START_MIN_WAIT_TIME = 3.5
 
@@ -18,34 +12,40 @@ func _ready():
 	
 
 func _on_Pit_golem_fell():
-	var new_enemy = GOLEM_ENRAGED.instance()
+	var GOLEM_ENEMY = preload('res://enemies/Golem/golemSprites/normal/EnemyNormal.tscn')
+	var new_enemy = GOLEM_ENEMY.instance()
 	new_enemy.connect('golem_died', self, '_on_enemy_died')
 	add_child(new_enemy)
 
 func _spawn_golem():
+	var GOLEM_ENEMY = preload('res://enemies/Golem/golemSprites/normal/EnemyNormal.tscn')
 	var new_enemy = GOLEM_ENEMY.instance()
 	new_enemy.connect('golem_died', self, '_on_enemy_died')
 	add_child(new_enemy)
 
 func _on_Pit_ghost_fell():
-	var new_enemy = GHOST_ENRAGED.instance()
+	var GHOST_ENEMY = preload('res://enemies/Ghost/ghostSprites/normal/EnemyNormal.tscn')
+	var new_enemy = GHOST_ENEMY.instance()
 	add_child(new_enemy)
-	$Timer.wait_time = 0.3
+	$Timer.wait_time = 0.4
 	$Timer.start()
-	new_enemy = GHOST_ENRAGED.instance()
+	new_enemy = GHOST_ENEMY.instance()
 	add_child(new_enemy)
 
 func _spawn_ghost():
+	var GHOST_ENEMY = preload('res://enemies/Ghost/ghostSprites/normal/EnemyNormal.tscn')
 	var new_enemy = GHOST_ENEMY.instance()
 	new_enemy.connect('ghost_died', self, '_on_enemy_died')
 	add_child(new_enemy)
 
 func _on_Pit_skull_fell():
-	var new_enemy = SKULL_ENRAGED.instance()
+	var SKULL_ENEMY = preload('res://enemies/Skull/skullSprites/normal/EnemyNormal.tscn')
+	var new_enemy = SKULL_ENEMY.instance()
 	new_enemy.connect('skull_died', self, '_on_enemy_died')
 	add_child(new_enemy)
 
 func _spawn_skull():
+	var SKULL_ENEMY = preload('res://enemies/Skull/skullSprites/normal/EnemyNormal.tscn')
 	var new_enemy = SKULL_ENEMY.instance()
 	new_enemy.connect('skull_died', self, '_on_enemy_died')
 	add_child(new_enemy)

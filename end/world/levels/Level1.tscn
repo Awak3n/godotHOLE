@@ -12,7 +12,7 @@
 [ext_resource path="res://enemies/Golem/golemSprites/normal/EnemyNormal.tscn" type="PackedScene" id=10]
 [ext_resource path="res://world/Pit.gd" type="Script" id=11]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=1]
 
 script/source = "extends Node
 
@@ -31,14 +31,14 @@ func _ready():
 #	pass
 "
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 57.1172, 21.7004 )
 
 [node name="Game" type="Node" index="0"]
 
-script = SubResource( 2 )
+script = SubResource( 1 )
 
 [node name="Background" type="Control" parent="." index="0"]
 
@@ -182,7 +182,7 @@ autostart = false
 [node name="Ghost" parent="Spawner/Timer" index="0" instance=ExtResource( 8 )]
 
 position = Vector2( 652.087, 872.479 )
-SPEED = 150
+SPEED = 125
 
 [node name="Skull" parent="Spawner/Timer" index="1" instance=ExtResource( 9 )]
 
@@ -191,7 +191,8 @@ position = Vector2( 652.087, 872.479 )
 [node name="Golem" parent="Spawner/Timer" index="2" instance=ExtResource( 10 )]
 
 position = Vector2( 654.359, 877.023 )
-SPEED = 100
+SPEED = 50
+MAX_HEALTH = 150
 
 [node name="Pit" type="Area2D" parent="." index="4"]
 
@@ -210,15 +211,15 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pit" index="0"]
 
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_Timer_timeout"]
+
+[connection signal="timeout" from="Spawner/Timer" to="Spawner/Timer/Ghost" method="_on_Timer_timeout"]
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner/Timer/Skull" method="_on_Timer_timeout"]
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner/Timer/Golem" method="_on_Timer_timeout"]
-
-[connection signal="timeout" from="Spawner/Timer" to="Spawner/Timer/Ghost" method="_on_Timer_timeout"]
 
 [connection signal="ghost_died" from="Spawner/Timer/Ghost" to="Background/TextureRect4" method="_on_Ghost_ghost_died"]
 
