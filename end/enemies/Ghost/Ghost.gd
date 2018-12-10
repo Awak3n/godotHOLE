@@ -24,7 +24,6 @@ func _physics_process(delta):
 
 func damage(value):
 	health -= value
-	print(health)
 	if health <= 0:
 		emit_signal('ghost_died')
 		queue_free()

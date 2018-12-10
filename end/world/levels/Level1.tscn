@@ -4,13 +4,13 @@
 [ext_resource path="res://world/background/set2_tiles.png" type="Texture" id=2]
 [ext_resource path="res://world/background/set2_hills.png" type="Texture" id=3]
 [ext_resource path="res://ScoreLabel.gd" type="Script" id=4]
-[ext_resource path="res://player/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://world/tiles/Tileset.tres" type="TileSet" id=6]
-[ext_resource path="res://world/Spawner.gd" type="Script" id=7]
-[ext_resource path="res://enemies/Ghost/ghostSprites/normal/EnemyNormal.tscn" type="PackedScene" id=8]
-[ext_resource path="res://enemies/Skull/skullSprites/normal/EnemyNormal.tscn" type="PackedScene" id=9]
-[ext_resource path="res://enemies/Golem/golemSprites/normal/EnemyNormal.tscn" type="PackedScene" id=10]
-[ext_resource path="res://world/Pit.gd" type="Script" id=11]
+[ext_resource path="res://world/tiles/Tileset.tres" type="TileSet" id=5]
+[ext_resource path="res://world/Spawner.gd" type="Script" id=6]
+[ext_resource path="res://enemies/Ghost/ghostSprites/normal/EnemyNormal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://enemies/Skull/skullSprites/normal/EnemyNormal.tscn" type="PackedScene" id=8]
+[ext_resource path="res://enemies/Golem/golemSprites/normal/EnemyNormal.tscn" type="PackedScene" id=9]
+[ext_resource path="res://world/Pit.gd" type="Script" id=10]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=11]
 
 [sub_resource type="GDScript" id=1]
 
@@ -107,10 +107,11 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 1231.0
-margin_top = 8.0
-margin_right = 1271.0
-margin_bottom = 48.0
+margin_left = 600.0
+margin_top = 12.0
+margin_right = 681.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 10, 10 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -119,33 +120,36 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 stretch_mode = 0
 script = ExtResource( 4 )
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags" ]
 
-[node name="Label" type="Label" parent="Background/TextureRect4" index="0"]
+[node name="label" type="Label" parent="Background/TextureRect4" index="0"]
 
-anchor_left = 0.0
+anchor_left = 1.0
 anchor_top = 0.0
-anchor_right = 0.0
+anchor_right = 1.0
 anchor_bottom = 0.0
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = -84.0
+margin_top = 1.0
+margin_right = -25.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 41, 14 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+text = "0"
+align = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Margin", "Rect", "Visibility" ]
 
-[node name="Player" parent="." index="1" instance=ExtResource( 5 )]
-
-position = Vector2( 639.675, -253.786 )
-
-[node name="TileMap" type="TileMap" parent="." index="2"]
+[node name="TileMap" type="TileMap" parent="." index="1"]
 
 mode = 0
-tile_set = ExtResource( 6 )
+tile_set = ExtResource( 5 )
 cell_size = Vector2( 64, 64 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -165,10 +169,10 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Spawner" type="Node2D" parent="." index="3"]
+[node name="Spawner" type="Node2D" parent="." index="2"]
 
 position = Vector2( 642.718, -238.806 )
-script = ExtResource( 7 )
+script = ExtResource( 6 )
 START_DELAY = 3
 START_MIN_WAIT_TIME = 3.5
 
@@ -179,22 +183,22 @@ wait_time = 1.0
 one_shot = true
 autostart = false
 
-[node name="Ghost" parent="Spawner/Timer" index="0" instance=ExtResource( 8 )]
+[node name="Ghost" parent="Spawner/Timer" index="0" instance=ExtResource( 7 )]
 
 position = Vector2( 652.087, 872.479 )
 SPEED = 125
 
-[node name="Skull" parent="Spawner/Timer" index="1" instance=ExtResource( 9 )]
+[node name="Skull" parent="Spawner/Timer" index="1" instance=ExtResource( 8 )]
 
 position = Vector2( 652.087, 872.479 )
 
-[node name="Golem" parent="Spawner/Timer" index="2" instance=ExtResource( 10 )]
+[node name="Golem" parent="Spawner/Timer" index="2" instance=ExtResource( 9 )]
 
 position = Vector2( 654.359, 877.023 )
 SPEED = 50
 MAX_HEALTH = 150
 
-[node name="Pit" type="Area2D" parent="." index="4"]
+[node name="Pit" type="Area2D" parent="." index="3"]
 
 position = Vector2( 640.148, 782.148 )
 input_pickable = true
@@ -204,7 +208,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 11 )
+script = ExtResource( 10 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -213,13 +217,17 @@ __meta__ = {
 
 shape = SubResource( 2 )
 
-[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_Timer_timeout"]
+[node name="Player" parent="." index="4" instance=ExtResource( 11 )]
 
-[connection signal="timeout" from="Spawner/Timer" to="Spawner/Timer/Ghost" method="_on_Timer_timeout"]
+position = Vector2( 643.86, -250.009 )
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner/Timer/Skull" method="_on_Timer_timeout"]
 
+[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_Timer_timeout"]
+
 [connection signal="timeout" from="Spawner/Timer" to="Spawner/Timer/Golem" method="_on_Timer_timeout"]
+
+[connection signal="timeout" from="Spawner/Timer" to="Spawner/Timer/Ghost" method="_on_Timer_timeout"]
 
 [connection signal="ghost_died" from="Spawner/Timer/Ghost" to="Background/TextureRect4" method="_on_Ghost_ghost_died"]
 

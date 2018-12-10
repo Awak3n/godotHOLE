@@ -7,7 +7,6 @@ export var GRAVITY = 500
 var direction = 0
 var motion = Vector2()
 var health = MAX_HEALTH
-onready var player = get_node("/player/Player")
 
 signal skull_died
 
@@ -24,7 +23,6 @@ func _physics_process(delta):
 
 func damage(value):
 	health -= value
-	print(health)
 	if health <= 0:
 		emit_signal('skull_died')
 		queue_free()
@@ -40,8 +38,4 @@ func _update_sprite_direction():
 	$AnimatedSprite.flip_h = direction == -1
 
 func _on_Timer_timeout():
-	direction = player.position - self.position
-	if direction.x > 0:
-		self.get_node("Skull").set_flip_h(1)
-	else:
-		self.get_node("Skull").set_flip_h(0)
+	pass

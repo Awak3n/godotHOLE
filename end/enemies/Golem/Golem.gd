@@ -23,7 +23,6 @@ func _physics_process(delta):
 
 func damage(value):
 	health -= value
-	print(health)
 	if health <= 0:
 		emit_signal('golem_died')
 		queue_free()
@@ -38,7 +37,5 @@ func _on_DirectionCheck_body_entered(body):
 func _update_sprite_direction():
 	$AnimatedSprite.flip_h = direction == -1
 
-
 func _on_Timer_timeout():
-	print(MAX_HEALTH)
 	MAX_HEALTH = MAX_HEALTH + 5

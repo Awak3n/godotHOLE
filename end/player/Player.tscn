@@ -14,12 +14,12 @@
 [ext_resource path="res://player/gun/raygunPurple.png" type="Texture" id=12]
 [ext_resource path="res://player/gun/Gun.gd" type="Script" id=13]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 13.5736, 22.1634 )
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
@@ -57,11 +57,11 @@ VELOCITY_CHANGE_RATE = 7500
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
 
-frames = SubResource( 1 )
+frames = SubResource( 2 )
 animation = "idle"
 
 [node name="Gun" type="Sprite" parent="." index="2"]
