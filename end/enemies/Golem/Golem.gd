@@ -24,6 +24,8 @@ func _physics_process(delta):
 func damage(value):
 	health -= value
 	if health <= 0:
+		direction = -direction
+		_update_sprite_direction()
 		emit_signal('golem_died')
 		queue_free()
 

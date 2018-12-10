@@ -6,11 +6,11 @@
 [ext_resource path="res://ScoreLabel.gd" type="Script" id=4]
 [ext_resource path="res://world/tiles/Tileset.tres" type="TileSet" id=5]
 [ext_resource path="res://world/Spawner.gd" type="Script" id=6]
-[ext_resource path="res://enemies/Ghost/ghostSprites/normal/EnemyNormal.tscn" type="PackedScene" id=7]
-[ext_resource path="res://enemies/Skull/skullSprites/normal/EnemyNormal.tscn" type="PackedScene" id=8]
+[ext_resource path="res://world/Pit.gd" type="Script" id=7]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://enemies/Golem/golemSprites/normal/EnemyNormal.tscn" type="PackedScene" id=9]
-[ext_resource path="res://world/Pit.gd" type="Script" id=10]
-[ext_resource path="res://player/Player.tscn" type="PackedScene" id=11]
+[ext_resource path="res://enemies/Ghost/ghostSprites/normal/EnemyNormal.tscn" type="PackedScene" id=10]
+[ext_resource path="res://enemies/Skull/skullSprites/normal/EnemyNormal.tscn" type="PackedScene" id=11]
 
 [sub_resource type="GDScript" id=1]
 
@@ -36,7 +36,7 @@ func _ready():
 custom_solver_bias = 0.0
 extents = Vector2( 57.1172, 21.7004 )
 
-[node name="Game" type="Node" index="0"]
+[node name="Game" type="Node"]
 
 script = SubResource( 1 )
 
@@ -128,9 +128,9 @@ anchor_left = 1.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 0.0
-margin_left = -84.0
+margin_left = -72.0
 margin_top = 1.0
-margin_right = -25.0
+margin_right = -13.0
 margin_bottom = 42.0
 rect_min_size = Vector2( 41, 14 )
 rect_pivot_offset = Vector2( 0, 0 )
@@ -140,7 +140,8 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 text = "0"
-align = 2
+align = 1
+valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -164,7 +165,7 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( -327672, 3, 0, -327669, 3, 0, -262136, 3, 0, -262133, 3, 0, -196600, 3, 0, -196597, 3, 0, -131064, 3, 0, -131061, 3, 0, -65528, 3, 0, -65525, 3, 0, 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 6, 3, 0, 7, 3, 0, 8, 3, 0, 11, 3, 0, 12, 3, 0, 13, 3, 0, 14, 3, 0, 15, 3, 0, 16, 3, 0, 17, 3, 0, 18, 3, 0, 19, 3, 0, 65536, 3, 0, 65537, 3, 0, 65554, 3, 0, 65555, 3, 0, 131072, 3, 0, 131091, 3, 0, 196608, 3, 0, 196616, 1, 0, 196617, 1, 0, 196618, 1, 0, 196619, 1, 0, 196627, 3, 0, 262144, 3, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262157, 1, 0, 262158, 1, 0, 262159, 1, 0, 262163, 3, 0, 327680, 3, 0, 327699, 3, 0, 393216, 3, 0, 393217, 1, 0, 393218, 1, 0, 393233, 1, 0, 393234, 1, 0, 393235, 3, 0, 458752, 3, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458771, 3, 0, 524288, 3, 0, 524292, 1, 0, 524293, 1, 0, 524294, 1, 0, 524301, 1, 0, 524302, 1, 0, 524303, 1, 0, 524307, 3, 0, 589824, 3, 0, 589825, 1, 0, 589842, 1, 0, 589843, 3, 0, 655360, 3, 0, 655361, 3, 0, 655362, 1, 0, 655377, 1, 0, 655378, 3, 0, 655379, 3, 0, 720896, 3, 0, 720897, 3, 0, 720898, 3, 0, 720899, 1, 0, 720900, 1, 0, 720901, 1, 0, 720902, 1, 0, 720903, 1, 0, 720904, 1, 0, 720907, 1, 0, 720908, 1, 0, 720909, 1, 0, 720910, 1, 0, 720911, 1, 0, 720912, 1, 0, 720913, 3, 0, 720914, 3, 0, 720915, 3, 0 )
+tile_data = PoolIntArray( -327672, 3, 0, -327669, 3, 0, -262136, 3, 0, -262133, 3, 0, -196600, 3, 0, -196597, 3, 0, -131064, 3, 0, -131061, 3, 0, -65528, 3, 0, -65525, 3, 0, 0, 3, 0, 1, 3, 0, 2, 3, 0, 3, 3, 0, 4, 3, 0, 5, 3, 0, 6, 3, 0, 7, 3, 0, 8, 3, 0, 11, 3, 0, 12, 3, 0, 13, 3, 0, 14, 3, 0, 15, 3, 0, 16, 3, 0, 17, 3, 0, 18, 3, 0, 19, 3, 0, 65536, 3, 0, 65537, 3, 0, 65554, 3, 0, 65555, 3, 0, 131072, 3, 0, 131091, 3, 0, 196608, 3, 0, 196616, 1, 0, 196617, 1, 0, 196618, 1, 0, 196619, 1, 0, 196627, 3, 0, 262144, 3, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262157, 1, 0, 262158, 1, 0, 262159, 1, 0, 262163, 3, 0, 327680, 3, 0, 327699, 3, 0, 393216, 3, 0, 393217, 1, 0, 393218, 1, 0, 393233, 1, 0, 393234, 1, 0, 393235, 3, 0, 458752, 3, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458771, 3, 0, 524288, 3, 0, 524292, 1, 0, 524293, 1, 0, 524294, 1, 0, 524301, 1, 0, 524302, 1, 0, 524303, 1, 0, 524307, 3, 0, 589824, 3, 0, 589843, 3, 0, 655360, 3, 0, 655361, 1, 0, 655362, 1, 0, 655377, 1, 0, 655378, 1, 0, 655379, 3, 0, 720896, 3, 0, 720897, 3, 0, 720898, 3, 0, 720899, 1, 0, 720900, 1, 0, 720901, 1, 0, 720902, 1, 0, 720903, 1, 0, 720904, 1, 0, 720907, 1, 0, 720908, 1, 0, 720909, 1, 0, 720910, 1, 0, 720911, 1, 0, 720912, 1, 0, 720913, 3, 0, 720914, 3, 0, 720915, 3, 0 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -183,21 +184,6 @@ wait_time = 1.0
 one_shot = true
 autostart = false
 
-[node name="Ghost" parent="Spawner/Timer" index="0" instance=ExtResource( 7 )]
-
-position = Vector2( 652.087, 872.479 )
-SPEED = 125
-
-[node name="Skull" parent="Spawner/Timer" index="1" instance=ExtResource( 8 )]
-
-position = Vector2( 652.087, 872.479 )
-
-[node name="Golem" parent="Spawner/Timer" index="2" instance=ExtResource( 9 )]
-
-position = Vector2( 654.359, 877.023 )
-SPEED = 50
-MAX_HEALTH = 150
-
 [node name="Pit" type="Area2D" parent="." index="3"]
 
 position = Vector2( 640.148, 782.148 )
@@ -208,7 +194,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 10 )
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -217,28 +203,28 @@ __meta__ = {
 
 shape = SubResource( 2 )
 
-[node name="Player" parent="." index="4" instance=ExtResource( 11 )]
+[node name="Player" parent="." index="4" instance=ExtResource( 8 )]
 
-position = Vector2( 643.86, -250.009 )
+position = Vector2( 642.19, -206.585 )
 
-[connection signal="timeout" from="Spawner/Timer" to="Spawner/Timer/Skull" method="_on_Timer_timeout"]
+[node name="Golem" parent="." index="5" instance=ExtResource( 9 )]
+
+[node name="Ghost" parent="." index="6" instance=ExtResource( 10 )]
+
+[node name="Skull" parent="." index="7" instance=ExtResource( 11 )]
 
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_Timer_timeout"]
-
-[connection signal="timeout" from="Spawner/Timer" to="Spawner/Timer/Golem" method="_on_Timer_timeout"]
-
-[connection signal="timeout" from="Spawner/Timer" to="Spawner/Timer/Ghost" method="_on_Timer_timeout"]
-
-[connection signal="ghost_died" from="Spawner/Timer/Ghost" to="Background/TextureRect4" method="_on_Ghost_ghost_died"]
-
-[connection signal="skull_died" from="Spawner/Timer/Skull" to="Background/TextureRect4" method="_on_Skull_skull_died"]
-
-[connection signal="golem_died" from="Spawner/Timer/Golem" to="Background/TextureRect4" method="_on_Golem_golem_died"]
 
 [connection signal="ghost_fell" from="Pit" to="Spawner" method="_on_Pit_ghost_fell"]
 
 [connection signal="golem_fell" from="Pit" to="Spawner" method="_on_Pit_golem_fell"]
 
 [connection signal="skull_fell" from="Pit" to="Spawner" method="_on_Pit_skull_fell"]
+
+[connection signal="golem_died" from="Golem" to="Background/TextureRect4" method="_on_Golem_golem_died"]
+
+[connection signal="ghost_died" from="Ghost" to="Background/TextureRect4" method="_on_Ghost_ghost_died"]
+
+[connection signal="skull_died" from="Skull" to="Background/TextureRect4" method="_on_Skull_skull_died"]
 
 

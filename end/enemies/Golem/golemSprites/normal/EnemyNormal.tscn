@@ -26,7 +26,7 @@ extents = Vector2( 22.9639, 27.2223 )
 custom_solver_bias = 0.0
 extents = Vector2( 30.2411, 10 )
 
-[node name="EnemyNormal" type="KinematicBody2D" groups=[
+[node name="EnemyNormal" type="KinematicBody2D" index="0" groups=[
 "enemies",
 ]]
 
@@ -44,7 +44,7 @@ GRAVITY = 500
 
 frames = SubResource( 1 )
 animation = "run"
-frame = 2
+frame = 4
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
